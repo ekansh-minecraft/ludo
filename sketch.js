@@ -1,6 +1,5 @@
 var canvas, backgroundImage;
 
-var board
 var mapper
 var cells = 17
 var size = 35
