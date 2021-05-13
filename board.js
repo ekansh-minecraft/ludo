@@ -1,28 +1,18 @@
 class Board {
-    constructor(x, y, w, h) {
-        this.x = x
-        this.y = y
-        this.w = w
-        this.h = h
-
-        this.size = 30
+    constructor(mapper, board_size) {
+        this.mapper = mapper
+        this.board_size = board_size
     }
 
     draw() {
-        rectMode(CENTER)
-        fill("red")
-        rect(this.x, this.y, this.w, this.h)
+        var n = this.board_size
 
-        var left = this.x - this.w/2
-        var right = this.x + this.w/2
-        var top = this.y - this.h/2
-        var bottom = this.y + this.h/2
-        var side = this.size - 2
-
-        fill("black")
-        for(var y=top + this.size/2 + 10; y < bottom - this.size/2; y+= this.size) {
-            for (var x=left + this.size / 2 + 9; x<right - this.size / 2; x += this.size) {
-                rect(x, y, side, side)
+        for (var r=0; r<n; r++) {
+            for (var c=0; c<n; c++) {
+                var pos = this.mapper.position(c, r)
+                //console.log(pos)
+                rect(pos.x, pos.y, pos.side, pos.side)        
+                //circle(pos.x, pos.y, pos.side)
             }
         }
     }

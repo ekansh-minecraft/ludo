@@ -1,23 +1,18 @@
 class Mapper {
-    constructor(x, y, side, n) {
+    constructor(x, y, side) {
         this.x = x
         this.y = y
         this.side = side
-        this.n = n
-
-        this.left = this.x - (this.side * n/2)
-        this.right = this.x + (this.side * n/2)
-        this.top = this.y - (this.side * n/2)
-        this.bottom = this.y + (this.side * n/2)
     }
 
     position(c, r) {
-        var x = this.left + (this.side*c) - this.side/2
-        var y = this.bottom - (this.side*r) + this.side/2
+        var x = this.x + this.side/2 + (this.side*c)
+        var y = this.y + this.side/2 + (this.side*r)
 
         return {
             'x': x,
-            'y': y
+            'y': y,
+            'side': this.side
         }
     }
 }
